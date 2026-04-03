@@ -1,8 +1,34 @@
+import { Suspense } from 'react'
 import './App.css'
-import BallMan from './Batsman'
+// import BallMan from './Batsman'
 import Batsman from './Batsman'
 import Counter from './Counter'
+import Users from './Users'
+import Friends from './Friends'
+
+// OLD WAY (Traditional fetch)
+// fetch("https://jsonplaceholder.typicode.com/users")
+// .then(res => res.json())
+// .then(data => console.log(data))
+
+
+// const fetchUsers = fetch("https://jsonplaceholder.typicode.com/users")
+//   .then(res => res.json())
+
+// OLD WAY(Traditional fetch)
+// const loadData = async () => {
+//   const res = await fetch("https://jsonplaceholder.typicode.com/users")
+//   const data = await res.json()
+//   return data
+// }
+
+const fetchFriends = async () => {
+  const res = await fetch("https://jsonplaceholder.typicode.com/users")
+  return res.json()
+}
+
 function App() {
+  const friendsPromise = fetchFriends()
 
   // Method 1: Regular function defined inside the component
   function handleClick() {
@@ -24,8 +50,17 @@ function App() {
     <>
       <h3>Vite + React Event Handlers</h3>
       <Counter></Counter>
-      {/* <Batsman></Batsman> */}
-      <BallMan></BallMan>
+
+      {/* <Suspense fallback={<h3>LLoading Friends...</h3>}>
+        <Users fetchUsers={fetchUsers}></Users>
+      </Suspense> */}
+
+      <Suspense fallback={<h3>Friends are coming for me treat....</h3>}>
+        <Friends friendsPromise={friendsPromise}></Friends>
+      </Suspense>
+
+      <Batsman></Batsman>
+      {/* <BallMan></BallMan> */}
 
       {/* 1. Using a pre-defined function reference.
         Pass the function name without parentheses so it only runs when clicked.

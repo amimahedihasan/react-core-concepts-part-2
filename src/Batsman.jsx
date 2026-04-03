@@ -49,6 +49,7 @@ export default function Batsman() {
     )
 }
 
+// more practice
 // export default function BallMan(){
 //      const[ball,setBall]= useState(0)
 
