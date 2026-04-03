@@ -2,9 +2,11 @@ import { Suspense } from 'react'
 import './App.css'
 // import BallMan from './Batsman'
 import Batsman from './Batsman'
+import Comments from './Comments'
 import Counter from './Counter'
 import Users from './Users'
 import Friends from './Friends'
+import Posts from './Posts'
 
 // OLD WAY (Traditional fetch)
 // fetch("https://jsonplaceholder.typicode.com/users")
@@ -22,13 +24,27 @@ import Friends from './Friends'
 //   return data
 // }
 
-const fetchFriends = async () => {
-  const res = await fetch("https://jsonplaceholder.typicode.com/users")
+// const fetchFriends = async () => {
+//   const res = await fetch("https://jsonplaceholder.typicode.com/users")
+//   return res.json()
+// }
+
+const fetchPosts = async() =>{
+  const res = await fetch('https://jsonplaceholder.typicode.com/posts');
+  return res.json()
+}
+
+
+
+const fetchComments = async()=>{
+  const res = await fetch("https://jsonplaceholder.typicode.com/comments")
   return res.json()
 }
 
 function App() {
-  const friendsPromise = fetchFriends()
+  const postsPromise = fetchPosts()
+  const commentsPromise = fetchComments()
+//   const friendsPromise = fetchFriends()
 
   // Method 1: Regular function defined inside the component
   function handleClick() {
@@ -50,14 +66,28 @@ function App() {
     <>
       <h3>Vite + React Event Handlers</h3>
       <Counter></Counter>
+      <Suspense fallback={<h3>All Comments are loading..</h3>}>
+      <Comments commentsPromise={commentsPromise}></Comments>
+
+      </Suspense>
+
+
+
+
+
+
+
+      <Suspense fallback={<h4>Posts are coming..</h4>}>
+      <Posts postsPromise={postsPromise}></Posts>
+      </Suspense>
 
       {/* <Suspense fallback={<h3>LLoading Friends...</h3>}>
         <Users fetchUsers={fetchUsers}></Users>
       </Suspense> */}
-
+{/* 
       <Suspense fallback={<h3>Friends are coming for me treat....</h3>}>
         <Friends friendsPromise={friendsPromise}></Friends>
-      </Suspense>
+      </Suspense> */}
 
       <Batsman></Batsman>
       {/* <BallMan></BallMan> */}
