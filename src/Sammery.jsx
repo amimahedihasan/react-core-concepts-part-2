@@ -71,9 +71,78 @@ const loadData = async () => {
     return data
 }
 
+//**
+ 
+//  * REACT ADVANCED KNOWLEDGE & LOGIC NOTES
+
 /**
- * Explanation:
- * - fetch() → calls API and returns Promise
- * - res.json() → converts response into usable data
- * - async/await → makes code look synchronous
+ * 1. Event Trigger
+ * Explanation: An event trigger is an action performed by a user 
+ * (like clicking, typing, or hovering). React listens to these 
+ * actions and executes a specific function.
+ * Example: onClick={() => console.log('Button Clicked!')}
  */
+
+/**
+ * 2. State
+ * Explanation: State is an object that holds information about 
+ * the component. When state changes, React "re-renders" the 
+ * component to update what the user sees on the screen.
+ */
+
+/**
+ * 3. Data Load from API
+ * Explanation: We fetch data from external servers (URLs). Since it 
+ * takes time, we use 'fetch' which returns a Promise. Once the data 
+ * arrives, we convert it to JSON and save it in a 'State'.
+ */
+
+/**
+ * 4. Loop through to display data (.map)
+ * Explanation: In React, we use the .map() function to iterate 
+ * through an array of data and return JSX for each item.
+ */
+
+/**
+ * 5. Why we use the 'key' prop?
+ * Explanation: The 'key' helps React identify which items have 
+ * changed, been added, or removed. It gives each list item a 
+ * stable identity, making the update process much faster.
+ * Rule: Always use a unique ID (like user.id) as the key.
+ */
+
+/**
+ * 6. What is useState and how does it work?
+ * Explanation: useState is a Hook that lets you add React state 
+ * to function components. 
+ * - It returns two things: the current state value and a 
+ * function that lets you update it.
+ * Syntax: const [value, setValue] = useState(initialValue)
+ */
+
+/**
+ * 7. What is useEffect and when should you use it?
+ * Explanation: useEffect lets you perform "side effects" in 
+ * functional components. 
+ * Use it for: 
+ * - Fetching data from an API on page load.
+ * - Setting up a subscription or timer.
+ * - Updating the document title.
+ */
+
+/**
+ * 8. Why is "Thinking in React" important?
+ * Explanation: It is the process of breaking a complex UI into 
+ * small, reusable components. It helps you decide where the 
+ * "State" should live and how data should flow (Top to Bottom).
+ * Benefit: Makes your code organized, scalable, and easy to debug.
+ */
+
+// -----------------------------------------------------------
+// A QUICK REMINDER FOR YOUR PRACTICE:
+// -----------------------------------------------------------
+/*
+  - If you use useEffect, don't forget the dependency array [].
+  - If you pass parameters to onClick, use an arrow function: () => func(param).
+  - Always destructure props like { commentsPromise } instead of just (props).
+*/

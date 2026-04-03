@@ -7,6 +7,7 @@ import Counter from './Counter'
 import Users from './Users'
 import Friends from './Friends'
 import Posts from './Posts'
+import Players from './Players'
 
 // OLD WAY (Traditional fetch)
 // fetch("https://jsonplaceholder.typicode.com/users")
@@ -29,57 +30,50 @@ import Posts from './Posts'
 //   return res.json()
 // }
 
-const fetchPosts = async() =>{
-  const res = await fetch('https://jsonplaceholder.typicode.com/posts');
-  return res.json()
-}
-
-
-
-const fetchComments = async()=>{
-  const res = await fetch("https://jsonplaceholder.typicode.com/comments")
-  return res.json()
-}
+// const fetchPosts = async() =>{
+//   const res = await fetch('https://jsonplaceholder.typicode.com/posts');
+//   return res.json()
+// }
+// const fetchComments = async()=>{
+//   const res = await fetch("https://jsonplaceholder.typicode.com/comments")
+//   return res.json()
+// }
 
 function App() {
-  const postsPromise = fetchPosts()
-  const commentsPromise = fetchComments()
+  
+  // const postsPromise = fetchPosts()
+  // const commentsPromise = fetchComments()
 //   const friendsPromise = fetchFriends()
 
   // Method 1: Regular function defined inside the component
-  function handleClick() {
-    alert("I am Clicked")
-  }
+  // function handleClick() {
+  //   alert("I am Clicked")
+  // }
 
   // Method 3: Arrow function assigned to a variable
-  const handleClick3 = () => {
-    alert('Clicked 3')
-  }
+  // const handleClick3 = () => {
+  //   alert('Clicked 3')
+  // }
 
   // Method 5: Function that accepts parameters
-  const handleAdd5 = (num) => {
-    const newNum = num + 5
-    alert(newNum)
-  }
+  // const handleAdd5 = (num) => {
+  //   const newNum = num + 5
+  //   alert(newNum)
+  // }
 
   return (
     <>
       <h3>Vite + React Event Handlers</h3>
       <Counter></Counter>
-      <Suspense fallback={<h3>All Comments are loading..</h3>}>
+      <Players></Players>
+      
+      {/* <Suspense fallback={<h3>All Comments are loading..</h3>}>
       <Comments commentsPromise={commentsPromise}></Comments>
+      </Suspense> */}
 
-      </Suspense>
-
-
-
-
-
-
-
-      <Suspense fallback={<h4>Posts are coming..</h4>}>
+      {/* <Suspense fallback={<h4>Posts are coming..</h4>}>
       <Posts postsPromise={postsPromise}></Posts>
-      </Suspense>
+      </Suspense> */}
 
       {/* <Suspense fallback={<h3>LLoading Friends...</h3>}>
         <Users fetchUsers={fetchUsers}></Users>
@@ -95,7 +89,7 @@ function App() {
       {/* 1. Using a pre-defined function reference.
         Pass the function name without parentheses so it only runs when clicked.
       */}
-      <button onClick={handleClick}>Click Me</button>
+      {/* <button onClick={handleClick}>Click Me</button> */}
 
       {/* 2. Inline regular function.
         Writing the function directly inside the onClick attribute.
@@ -105,7 +99,7 @@ function App() {
       {/* 3. Using an arrow function reference.
         A modern and clean way to handle events using a constant.
       */}
-      <button onClick={handleClick3}>Clicked me 3</button>
+      {/* <button onClick={handleClick3}>Clicked me 3</button> */}
 
       {/* 4. Inline arrow function.
         Useful for very short logic that doesn't need a separate function.
