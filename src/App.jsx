@@ -1,5 +1,7 @@
 import './App.css'
-
+import BallMan from './Batsman'
+import Batsman from './Batsman'
+import Counter from './Counter'
 function App() {
 
   // Method 1: Regular function defined inside the component
@@ -21,6 +23,9 @@ function App() {
   return (
     <>
       <h3>Vite + React Event Handlers</h3>
+      <Counter></Counter>
+      {/* <Batsman></Batsman> */}
+      <BallMan></BallMan>
 
       {/* 1. Using a pre-defined function reference.
         Pass the function name without parentheses so it only runs when clicked.
